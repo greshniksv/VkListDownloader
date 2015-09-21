@@ -1,6 +1,6 @@
 ﻿namespace VkListDownloader
 {
-	partial class Form1
+	partial class FrmMain
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -25,7 +25,7 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
 			this.txbFile = new System.Windows.Forms.TextBox();
 			this.SelectList = new System.Windows.Forms.Button();
 			this.listView1 = new System.Windows.Forms.ListView();
@@ -76,7 +76,7 @@
 			// columnHeader1
 			// 
 			this.columnHeader1.Text = "File name";
-			this.columnHeader1.Width = 430;
+			this.columnHeader1.Width = 550;
 			// 
 			// columnHeader3
 			// 
@@ -85,7 +85,6 @@
 			// columnHeader2
 			// 
 			this.columnHeader2.Text = "Progress";
-			this.columnHeader2.Width = 180;
 			// 
 			// gbLoadProgress
 			// 

@@ -1,22 +1,20 @@
-﻿using System;
-using System.Windows.Forms;
-
-namespace VkListDownloader
+﻿namespace VkListDownloader
 {
+	using System;
 	using System.Collections.Generic;
 	using System.ComponentModel;
 	using System.IO;
 	using System.Text;
-	using System.Windows.Forms.VisualStyles;
+	using System.Windows.Forms;
 
-	public partial class Form1 : Form
+	public partial class FrmMain : Form
 	{
 
 		private Dictionary<string, string> _urlDictionary;
 		private BackgroundWorker _worker;
 		delegate void SetProgress(string id, int retry, int progress);
 
-		public Form1() {
+		public FrmMain() {
 			InitializeComponent();
 		}
 
@@ -80,27 +78,14 @@ namespace VkListDownloader
 		}
 
 		void linkDownloader_Progress(string id, int retry, int progress) {
-
 			BeginInvoke(new MethodInvoker(delegate {
-
 				foreach (ListViewItem item in listView1.Items) {
 					if ((string)item.Tag == id) {
 						item.SubItems[1].Text = retry.ToString();
 						item.SubItems[2].Text = progress + @" %";
 					}
 				}
-
 			}));
-
-
-			
-		}
-
-		private void SetInfo(string id, int retry, int progress) {
-			if (this.listView1.InvokeRequired) {
-				var d = new SetProgress(SetInfo);
-				this.Invoke(d, new object[] { id, retry, progress });
-			} 
 		}
 
 		private void LoadToListView(Dictionary<string, string> dictionary) {
@@ -114,7 +99,6 @@ namespace VkListDownloader
 				listView1.Items.Add(ii);
 			}
 		}
-
 
 	}
 }
