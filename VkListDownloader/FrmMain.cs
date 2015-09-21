@@ -82,7 +82,20 @@
 				foreach (ListViewItem item in listView1.Items) {
 					if ((string)item.Tag == id) {
 						item.SubItems[1].Text = retry.ToString();
-						item.SubItems[2].Text = progress + @" %";
+						var line = string.Concat(progress , "% [");
+						int count = 0;
+						for (int i = 0; i < (int)(progress/10); i++) {
+							line += "█";
+							count++;
+						}
+						for (int i = 0; i < 10-count; i++) {
+							line += "░";
+						}
+						line += "]";
+						if (item.SubItems[2].Text != line) {
+							item.SubItems[2].Text = line;
+						}
+						//item.SubItems[2].Text = progress + @" %";
 					}
 				}
 			}));
@@ -95,7 +108,7 @@
 					Tag = Tools.GetMD5Hash(string.Concat(item.Key, item.Value))
 				};
 				ii.SubItems.Add("0");
-				ii.SubItems.Add("0%");
+				ii.SubItems.Add("");
 				listView1.Items.Add(ii);
 			}
 		}

@@ -76,7 +76,7 @@
 			// columnHeader1
 			// 
 			this.columnHeader1.Text = "File name";
-			this.columnHeader1.Width = 550;
+			this.columnHeader1.Width = 450;
 			// 
 			// columnHeader3
 			// 
@@ -85,6 +85,7 @@
 			// columnHeader2
 			// 
 			this.columnHeader2.Text = "Progress";
+			this.columnHeader2.Width = 140;
 			// 
 			// gbLoadProgress
 			// 
@@ -126,7 +127,7 @@
 			this.richTextBox1.TabIndex = 4;
 			this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
 			// 
-			// Form1
+			// FrmMain
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -136,7 +137,7 @@
 			this.Controls.Add(this.listView1);
 			this.Controls.Add(this.SelectList);
 			this.Controls.Add(this.txbFile);
-			this.Name = "Form1";
+			this.Name = "FrmMain";
 			this.Text = "Form1";
 			this.gbLoadProgress.ResumeLayout(false);
 			this.gbLoadProgress.PerformLayout();
