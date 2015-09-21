@@ -120,4 +120,11 @@
   <metadata name="backgroundWorker1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="richTextBox1.Text" xml:space="preserve">
+    <value>Add to downloaded file:
+&lt;script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js”&gt;&lt;/script&gt;
+
+Define 'r' and Execute in console:
+jQuery(".audio").each(function(i,v){ r+=jQuery("#"+v.id).find("b").text()+"|"+jQuery("#"+v.id).find(".title").text()+"|"+jQuery("#"+v.id).find("input").val().replace("http://","h=")  +";"; })</value>
+  </data>
 </root>

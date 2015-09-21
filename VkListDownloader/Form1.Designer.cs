@@ -25,16 +25,18 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
 			this.txbFile = new System.Windows.Forms.TextBox();
 			this.SelectList = new System.Windows.Forms.Button();
 			this.listView1 = new System.Windows.Forms.ListView();
 			this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.gbLoadProgress = new System.Windows.Forms.GroupBox();
-			this.label1 = new System.Windows.Forms.Label();
 			this.lblLoaded = new System.Windows.Forms.Label();
+			this.label1 = new System.Windows.Forms.Label();
 			this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-			this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.richTextBox1 = new System.Windows.Forms.RichTextBox();
 			this.gbLoadProgress.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -64,9 +66,9 @@
             this.columnHeader2});
 			this.listView1.FullRowSelect = true;
 			this.listView1.GridLines = true;
-			this.listView1.Location = new System.Drawing.Point(12, 38);
+			this.listView1.Location = new System.Drawing.Point(12, 149);
 			this.listView1.Name = "listView1";
-			this.listView1.Size = new System.Drawing.Size(710, 548);
+			this.listView1.Size = new System.Drawing.Size(710, 505);
 			this.listView1.TabIndex = 2;
 			this.listView1.UseCompatibleStateImageBehavior = false;
 			this.listView1.View = System.Windows.Forms.View.Details;
@@ -75,6 +77,10 @@
 			// 
 			this.columnHeader1.Text = "File name";
 			this.columnHeader1.Width = 430;
+			// 
+			// columnHeader3
+			// 
+			this.columnHeader3.Text = "Retry";
 			// 
 			// columnHeader2
 			// 
@@ -85,22 +91,12 @@
 			// 
 			this.gbLoadProgress.Controls.Add(this.lblLoaded);
 			this.gbLoadProgress.Controls.Add(this.label1);
-			this.gbLoadProgress.Location = new System.Drawing.Point(268, 219);
+			this.gbLoadProgress.Location = new System.Drawing.Point(259, 310);
 			this.gbLoadProgress.Name = "gbLoadProgress";
 			this.gbLoadProgress.Size = new System.Drawing.Size(200, 100);
 			this.gbLoadProgress.TabIndex = 3;
 			this.gbLoadProgress.TabStop = false;
 			this.gbLoadProgress.Visible = false;
-			// 
-			// label1
-			// 
-			this.label1.AutoSize = true;
-			this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.label1.Location = new System.Drawing.Point(19, 40);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(90, 25);
-			this.label1.TabIndex = 0;
-			this.label1.Text = "Loaded:";
 			// 
 			// lblLoaded
 			// 
@@ -112,15 +108,31 @@
 			this.lblLoaded.TabIndex = 1;
 			this.lblLoaded.Text = "0";
 			// 
-			// columnHeader3
+			// label1
 			// 
-			this.columnHeader3.Text = "Retry";
+			this.label1.AutoSize = true;
+			this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.label1.Location = new System.Drawing.Point(19, 40);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(90, 25);
+			this.label1.TabIndex = 0;
+			this.label1.Text = "Loaded:";
+			// 
+			// richTextBox1
+			// 
+			this.richTextBox1.Location = new System.Drawing.Point(12, 38);
+			this.richTextBox1.Name = "richTextBox1";
+			this.richTextBox1.ReadOnly = true;
+			this.richTextBox1.Size = new System.Drawing.Size(710, 105);
+			this.richTextBox1.TabIndex = 4;
+			this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
 			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(734, 598);
+			this.ClientSize = new System.Drawing.Size(734, 666);
+			this.Controls.Add(this.richTextBox1);
 			this.Controls.Add(this.gbLoadProgress);
 			this.Controls.Add(this.listView1);
 			this.Controls.Add(this.SelectList);
@@ -146,6 +158,7 @@
 		private System.Windows.Forms.Label label1;
 		private System.ComponentModel.BackgroundWorker backgroundWorker1;
 		private System.Windows.Forms.ColumnHeader columnHeader3;
+		private System.Windows.Forms.RichTextBox richTextBox1;
 	}
 }
 
