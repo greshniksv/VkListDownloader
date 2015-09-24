@@ -25,7 +25,6 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
 			this.txbFile = new System.Windows.Forms.TextBox();
 			this.SelectList = new System.Windows.Forms.Button();
 			this.listView1 = new System.Windows.Forms.ListView();
@@ -36,7 +35,7 @@
 			this.lblLoaded = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
 			this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-			this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+			this.btnHelp = new System.Windows.Forms.Button();
 			this.gbLoadProgress.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -45,12 +44,12 @@
 			this.txbFile.Location = new System.Drawing.Point(12, 12);
 			this.txbFile.Name = "txbFile";
 			this.txbFile.ReadOnly = true;
-			this.txbFile.Size = new System.Drawing.Size(629, 20);
+			this.txbFile.Size = new System.Drawing.Size(475, 20);
 			this.txbFile.TabIndex = 0;
 			// 
 			// SelectList
 			// 
-			this.SelectList.Location = new System.Drawing.Point(647, 9);
+			this.SelectList.Location = new System.Drawing.Point(493, 9);
 			this.SelectList.Name = "SelectList";
 			this.SelectList.Size = new System.Drawing.Size(75, 23);
 			this.SelectList.TabIndex = 1;
@@ -66,9 +65,9 @@
             this.columnHeader2});
 			this.listView1.FullRowSelect = true;
 			this.listView1.GridLines = true;
-			this.listView1.Location = new System.Drawing.Point(12, 149);
+			this.listView1.Location = new System.Drawing.Point(12, 38);
 			this.listView1.Name = "listView1";
-			this.listView1.Size = new System.Drawing.Size(710, 505);
+			this.listView1.Size = new System.Drawing.Size(710, 616);
 			this.listView1.TabIndex = 2;
 			this.listView1.UseCompatibleStateImageBehavior = false;
 			this.listView1.View = System.Windows.Forms.View.Details;
@@ -118,21 +117,22 @@
 			this.label1.TabIndex = 0;
 			this.label1.Text = "Loaded:";
 			// 
-			// richTextBox1
+			// btnHelp
 			// 
-			this.richTextBox1.Location = new System.Drawing.Point(12, 38);
-			this.richTextBox1.Name = "richTextBox1";
-			this.richTextBox1.ReadOnly = true;
-			this.richTextBox1.Size = new System.Drawing.Size(710, 105);
-			this.richTextBox1.TabIndex = 4;
-			this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
+			this.btnHelp.Location = new System.Drawing.Point(574, 9);
+			this.btnHelp.Name = "btnHelp";
+			this.btnHelp.Size = new System.Drawing.Size(148, 23);
+			this.btnHelp.TabIndex = 4;
+			this.btnHelp.Text = "How create list ?";
+			this.btnHelp.UseVisualStyleBackColor = true;
+			this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
 			// 
 			// FrmMain
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(734, 666);
-			this.Controls.Add(this.richTextBox1);
+			this.Controls.Add(this.btnHelp);
 			this.Controls.Add(this.gbLoadProgress);
 			this.Controls.Add(this.listView1);
 			this.Controls.Add(this.SelectList);
@@ -158,7 +158,7 @@
 		private System.Windows.Forms.Label label1;
 		private System.ComponentModel.BackgroundWorker backgroundWorker1;
 		private System.Windows.Forms.ColumnHeader columnHeader3;
-		private System.Windows.Forms.RichTextBox richTextBox1;
+		private System.Windows.Forms.Button btnHelp;
 	}
 }
 

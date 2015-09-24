@@ -43,11 +43,11 @@
 					Application.DoEvents();
 					var linkDownloader = new LinkDownloader(2, 10, "c:\\tmp\\", _urlDictionary);
 					linkDownloader.Progress += linkDownloader_Progress;
-					
+
 
 				};
 				_worker.RunWorkerAsync();
-				
+
 			}
 		}
 
@@ -58,7 +58,16 @@
 			using (TextReader reader = new StreamReader(file, Encoding.UTF8)) {
 				fileData = reader.ReadToEnd();
 			}
-			var urls = fileData.Split(';');
+
+			int position = 0;
+			while (position < fileData.Length) {
+				var artist = GetBlock(fileData, ref position);
+				var title = GetBlock(fileData, ref position);
+				var url = GetBlock(fileData, ref position);
+				result.Add(string.Concat(artist, " - ", title), url);
+			}
+
+			/*var urls = fileData.Split(';');
 			int count = 0;
 			foreach (var url in urls) {
 				_worker.ReportProgress(count++);
@@ -73,8 +82,24 @@
 				var title = Tools.FixFileName(data[1]);
 				var fileUrl = data[2].Replace("h=","http://");
 				result.Add(string.Concat(artist, " - ", title), fileUrl);
-			}
+			}*/
 			_urlDictionary = result;
+		}
+
+		private string GetBlock(string data, ref int position) {
+			string charCount = string.Empty;
+			for (int i = position; i <= data.Length; i++) {
+				if (data[i] != '|') {
+					charCount += data[i];
+				} else {
+					position = i + 1;
+					break;
+				}
+			}
+			var charCountInt = Int32.Parse(charCount);
+			string result = data.Substring(position, charCountInt);
+			position += charCountInt;
+			return result;
 		}
 
 		void linkDownloader_Progress(string id, int retry, int progress) {
@@ -82,13 +107,13 @@
 				foreach (ListViewItem item in listView1.Items) {
 					if ((string)item.Tag == id) {
 						item.SubItems[1].Text = retry.ToString();
-						var line = string.Concat(progress , "% [");
+						var line = string.Concat(progress, "% [");
 						int count = 0;
-						for (int i = 0; i < (int)(progress/10); i++) {
+						for (int i = 0; i < (int)(progress / 10); i++) {
 							line += "█";
 							count++;
 						}
-						for (int i = 0; i < 10-count; i++) {
+						for (int i = 0; i < 10 - count; i++) {
 							line += "░";
 						}
 						line += "]";
@@ -112,6 +137,12 @@
 				listView1.Items.Add(ii);
 			}
 		}
+
+		private void btnHelp_Click(object sender, EventArgs e) {
+			var help = new FrmHelp();
+			help.ShowDialog();
+		}
+
 
 	}
 }
