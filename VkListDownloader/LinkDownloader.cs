@@ -1,4 +1,6 @@
-﻿namespace VkListDownloader
+﻿using System.IO;
+
+namespace VkListDownloader
 {
 	using System;
 	using System.Collections.Generic;
@@ -52,21 +54,39 @@
 			}
 		}
 
-		private void Downloaded(string name, string url) {
+		private void Downloaded(string name, string url)
+		{
 			var fileId = Tools.GetMD5Hash(string.Concat(name, url));
-			var tempFileName = string.Concat(_workDirectory, "\\", fileId);
-			var wc = new WebClient();
-			for (int i = 0; i < _retryCount; i++) {
+			var tempFileName = string.Concat(_workDirectory, fileId, ".mp3");
+			for (int i = 0; i < _retryCount; i++)
+			{
+				var wc = new WebClient();
 				int retry = i;
 				RizeEvent(fileId, retry, 0);
 				wc.DownloadProgressChanged += (sender, args) =>
+				{
 					RizeEvent(fileId, retry, (int)(args.BytesReceived * 100 / args.TotalBytesToReceive));
-				wc.DownloadFileCompleted += (sender, args) => RizeEvent(fileId, retry, 100);
-				try {
+				};
+
+				wc.DownloadFileCompleted += (sender, args) =>
+				{
+					RizeEvent(fileId, retry, 100);
+					var newFile = _workDirectory + name + ".mp3";
+					int tryCount = 0;
+					while (File.Exists(newFile))
+					{
+						tryCount++;
+						newFile = _workDirectory + name + tryCount + ".mp3";
+					}
+					File.Move(tempFileName, newFile);
+				};
+				try
+				{
 					wc.DownloadFile(url, tempFileName);
+					wc.DownloadFileAsync(new Uri(url), tempFileName);
 					break;
-				} catch(Exception) {
 				}
+				catch (Exception ex) { }
 			}
 		}
 

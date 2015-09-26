@@ -41,6 +41,8 @@
 			// 
 			// txbFile
 			// 
+			this.txbFile.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.txbFile.Location = new System.Drawing.Point(12, 12);
 			this.txbFile.Name = "txbFile";
 			this.txbFile.ReadOnly = true;
@@ -49,6 +51,7 @@
 			// 
 			// SelectList
 			// 
+			this.SelectList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.SelectList.Location = new System.Drawing.Point(493, 9);
 			this.SelectList.Name = "SelectList";
 			this.SelectList.Size = new System.Drawing.Size(75, 23);
@@ -59,6 +62,9 @@
 			// 
 			// listView1
 			// 
+			this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader3,
@@ -84,6 +90,7 @@
 			// columnHeader2
 			// 
 			this.columnHeader2.Text = "Progress";
+			this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			this.columnHeader2.Width = 140;
 			// 
 			// gbLoadProgress
@@ -119,6 +126,7 @@
 			// 
 			// btnHelp
 			// 
+			this.btnHelp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnHelp.Location = new System.Drawing.Point(574, 9);
 			this.btnHelp.Name = "btnHelp";
 			this.btnHelp.Size = new System.Drawing.Size(148, 23);

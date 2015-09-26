@@ -26,8 +26,12 @@ namespace VkListDownloader
 				if (correctChars.Any(x => x == name.ToLower()[i])) {
 					result += name[i];
 				} else {
-					result += ".";
+					//result += ".";
 				}
+			}
+			if (string.IsNullOrEmpty(result))
+			{
+				result = "Unknown";
 			}
 			return result.Length < 40 ? result : result.Substring(0,40);
 		}

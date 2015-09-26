@@ -41,10 +41,8 @@
 					Application.DoEvents();
 					LoadToListView(_urlDictionary);
 					Application.DoEvents();
-					var linkDownloader = new LinkDownloader(2, 10, "c:\\tmp\\", _urlDictionary);
+					var linkDownloader = new LinkDownloader(50, 10, "c:\\tmp\\", _urlDictionary);
 					linkDownloader.Progress += linkDownloader_Progress;
-
-
 				};
 				_worker.RunWorkerAsync();
 
@@ -61,28 +59,15 @@
 
 			int position = 0;
 			while (position < fileData.Length) {
-				var artist = GetBlock(fileData, ref position);
-				var title = GetBlock(fileData, ref position);
+				var artist = Tools.FixFileName(GetBlock(fileData, ref position));
+				var title = Tools.FixFileName(GetBlock(fileData, ref position));
 				var url = GetBlock(fileData, ref position);
-				result.Add(string.Concat(artist, " - ", title), url);
+				var key = string.Concat(artist, " - ", title);
+				if (!result.ContainsKey(key))
+				{
+					result.Add(string.Concat(artist, " - ", title), url.Replace("h=","http://"));
+				}
 			}
-
-			/*var urls = fileData.Split(';');
-			int count = 0;
-			foreach (var url in urls) {
-				_worker.ReportProgress(count++);
-				if (url.Length < 3) {
-					continue;
-				}
-				var data = url.Split('|');
-				if (data.Length != 3) {
-					throw new Exception("ERROR BLYA");
-				}
-				var artist = Tools.FixFileName(data[0]);
-				var title = Tools.FixFileName(data[1]);
-				var fileUrl = data[2].Replace("h=","http://");
-				result.Add(string.Concat(artist, " - ", title), fileUrl);
-			}*/
 			_urlDictionary = result;
 		}
 
